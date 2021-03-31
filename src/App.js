@@ -22,7 +22,7 @@ function App() {
       id: 1,
       title: 'कोरोना वायरस',
       question: 'क्या आपको लगता है कि कोरोना वायरस बहुत जानलेवा बीमारी है?',
-      options: [{ label: 'हाँ', percentage: '98%' }, { label: 'नहीं', percentage: '2%' }],
+      options: [{ label: 'हाँ', percentage: '74%' }, { label: 'नहीं', percentage: '26%' }],
       peopleVoted: 21234
     },
     {
@@ -83,7 +83,7 @@ function Child({ data }) {
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
   let { id } = useParams()
-  const item = data.find(pollItem => pollItem.id == id)
+  const item = data.find(pollItem => pollItem.id === id)
 
   return (
     <div>

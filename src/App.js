@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,9 +6,11 @@ import {
   Link,
   useParams
 } from "react-router-dom"
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Radio from '@material-ui/core/Radio'
+import { blue } from '@material-ui/core/colors';
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import logo from './logo.svg'
@@ -19,14 +21,14 @@ import { JKPPaper, JKPCard } from './atoms/JKPCard'
 function App() {
   const data = [
     {
-      id: 1,
+      id: '1',
       title: 'कोरोना वायरस',
       question: 'क्या आपको लगता है कि कोरोना वायरस बहुत जानलेवा बीमारी है?',
       options: [{ label: 'हाँ', percentage: '74%' }, { label: 'नहीं', percentage: '26%' }],
       peopleVoted: 21234
     },
     {
-      id: 2,
+      id: '2',
       title: 'यूपी विधनसभा २०२२',
       question: 'इस बार यूपी विधानसभा 2022 का चुनाव कौन जीतेगा?',
       options: [
@@ -79,7 +81,22 @@ function App() {
   )
 }
 
+const BlueRadio = withStyles({
+  root: {
+    color: blue[400],
+    '&$checked': {
+      color: blue[600],
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
+
 function Child({ data }) {
+
+  const [selected, setSelected] = useState('');
+  const handleChange = (event) => {
+    setSelected(event.target.value);
+  }
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
   let { id } = useParams()
@@ -89,8 +106,8 @@ function Child({ data }) {
     <div>
       <Typography variant="h4">{item.title}</Typography>
       <Typography variant="h5">{item.question}</Typography>
-      <RadioGroup aria-label="gender" name="gender1">{
-        item.options.map((option) => <FormControlLabel value="female" control={<Radio />} label={option.label} />)
+      <RadioGroup aria-label="gender" name={id} value={selected} onChange={handleChange}>{
+        item.options.map((option) => <FormControlLabel value={option.label} control={<BlueRadio />} label={option.label} />)
       }
       </RadioGroup>
 

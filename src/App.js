@@ -15,7 +15,7 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import logo from './logo.svg'
 import './App.css'
-import { JKPPaper, JKPCard } from './atoms/JKPCard'
+import { JKPCard } from './atoms/JKPCard'
 
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
     },
     {
       id: '2',
-      title: 'यूपी विधनसभा २०२२',
+      title: 'यूपी विधानसभा २०२२',
       question: 'इस बार यूपी विधानसभा 2022 का चुनाव कौन जीतेगा?',
       options: [
         { label: 'बी जे पी', percentage: '35%' },
@@ -63,17 +63,17 @@ function App() {
             </JKPCard>
           </div>
           <div className="col-md-3">
-            <JKPPaper elevation="2">
+            <JKPCard raised>
               <Typography variant="h6" style={{}}>अन्य पोल</Typography>
               <ul>
                 <li>
                   <Link to="/1">कोरोना वायरस</Link>
                 </li>
                 <li>
-                  <Link to="/2">यूपी विधनसभा २०२२</Link>
+                  <Link to="/2">यूपी विधान सभा २०२२</Link>
                 </li>
               </ul>
-            </JKPPaper>
+            </JKPCard>
           </div>
         </div>
       </Router>

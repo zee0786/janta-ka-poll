@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

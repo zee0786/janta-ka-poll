@@ -45,7 +45,7 @@ function App() {
     <div className="App container">
       <header className="App-header">
         <AppBar />
-        <div className="">
+        <div className="header">
           <img src={logo} className="App-logo" alt="logo" />
           <Typography variant="h3" style={{}}>
             जनता का पोल

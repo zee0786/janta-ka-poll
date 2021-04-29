@@ -9,7 +9,8 @@ module.exports = {
   externals: [nodeExternals()],
 
   output: {
-    path: path.resolve('server-build'),
+    publicPath: '/',
+    path: path.resolve(__dirname, './server-build/'),
     filename: 'index.js'
   },
 
@@ -18,6 +19,24 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ]
       }
     ]
   }

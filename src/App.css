@@ -18,6 +18,11 @@
   font-size: calc(10px + 2vmin);
 }
 
+.header{  
+  display: flex;
+  align-items: center;
+}
+
 .App-link {
   color: #61dafb;
 }
